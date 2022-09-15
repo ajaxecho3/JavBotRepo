@@ -15,19 +15,31 @@ import androidx.annotation.NonNull;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import android.widget.Toast;
 
 import com.example.javachatbot.databinding.ActivityMainBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class MainActivity extends AppCompatActivity {
     // Remove the below line after defining your own ad unit ID.
@@ -37,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     private InterstitialAd mInterstitialAd;
     private ActivityMainBinding binding;
+
+    //Chat Bot variable
+
+    private RecyclerView chatsRV;
+    private EditText userMsgEdt;
+    private ImageButton sendMsgBtn;
+    private  final  String BOT_KEY = "bot";
+    private  final  String USER_KEY = "user";
+    private ArrayList<MessageModal>messageModalArrayList;
+    private MessageRVAdapter messageRVAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +84,63 @@ public class MainActivity extends AppCompatActivity {
 
         // Toasts the test ad message on the screen. Remove this after defining your own ad unit ID.
         Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_LONG).show();
+
+        chatsRV = findViewById(R.id.RVChat);
+        userMsgEdt = findViewById(R.id.MessageInput);
+        sendMsgBtn = findViewById(R.id.SendBtn);
+        messageModalArrayList = new ArrayList<>();
+        messageRVAdapter = new MessageRVAdapter(messageModalArrayList, this);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        chatsRV.setLayoutManager(manager);
+        chatsRV.setNestedScrollingEnabled(true);
+        chatsRV.setAdapter(messageRVAdapter);
+
+        sendMsgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(userMsgEdt.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                getResponse(userMsgEdt.getText().toString());
+                manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
+                userMsgEdt.setText("");
+            }
+        });
+
     }
+
+    private void getResponse(String message){
+        messageModalArrayList.add(new MessageModal(message, USER_KEY));
+        messageRVAdapter.notifyItemInserted(messageRVAdapter.getItemCount() - 1);
+        String url = "http://api.brainshop.ai/get?bid=169138&key=4DS31oLcC4iIXJp8&uid=[uid]&msg="+message;
+        String BASE_URL = "http://api.brainshop.ai/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RequestAPI requestAPI = retrofit.create(RequestAPI.class);
+        Call<MsgModal> call = requestAPI.getMessage(url);
+        call.enqueue(new Callback<MsgModal>() {
+            @Override
+            public void onResponse(Call<MsgModal> call, Response<MsgModal> response) {
+                if(response.isSuccessful()){
+                    MsgModal modal = response.body();
+                    messageModalArrayList.add(new MessageModal(modal.getCnt(), BOT_KEY));
+                    messageRVAdapter.notifyItemInserted(messageRVAdapter.getItemCount() - 1);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MsgModal> call, Throwable t) {
+                messageModalArrayList.add(new MessageModal("Please revert your message", BOT_KEY));
+                messageRVAdapter.notifyItemInserted(messageRVAdapter.getItemCount() - 1);
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
