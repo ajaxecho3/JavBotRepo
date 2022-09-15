@@ -6,6 +6,9 @@
     <string name="PlaceholderTxtInput">Enter message here</string>
     <string name="sendBtn">Send Button</string>
     <string name="next_level">Next Level</string>
+    <string name="UserMsg">User Message</string>
+    <string name="BotMsg">Bot Message</string>
+    <string name="PlaceholderMsg">Enter Message</string>
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
