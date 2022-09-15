@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/rounded_button_focus.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/rounded_button_hovered.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/rounded_button_initial.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/rounded_textboxinput_focus.xml" value="0.2905" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/rounded_textboxinput_pressed.xml" value="0.2905" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/base_rounded_component_button.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/base_rounded_component_input.xml" value="0.2905" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/ic_launcher_background.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/rounded_button_press.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/rounded_inputbox.xml" value="0.2945" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/rounded_textboxinput.xml" value="0.281" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable/roundedinputtextbox.xml" value="0.2945" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/layout/activity_main.xml" value="0.4" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
