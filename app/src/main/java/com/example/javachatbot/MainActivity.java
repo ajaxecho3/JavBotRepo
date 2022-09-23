@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loadBannerAds();
-        loadInterstitialAd();
+//        loadInterstitialAd();
 
         chatsRV = findViewById(R.id.RVChat);
         userMsgEdt = findViewById(R.id.MessageInput);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                showInterstitial();
+//                showInterstitial();
                 getResponse(userMsgEdt.getText().toString());
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
                 userMsgEdt.setText("");
@@ -158,68 +158,68 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void loadInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        InterstitialAd.load(
-                this,
-                AD_UNIT_ID,
-                adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-
-                        Toast.makeText(MainActivity.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
-                        interstitialAd.setFullScreenContentCallback(
-                                new FullScreenContentCallback() {
-                                    @Override
-                                    public void onAdDismissedFullScreenContent() {
-                                        // Called when fullscreen content is dismissed.
-                                        // Make sure to set your reference to null so you don't
-                                        // show it a second time.
-                                        mInterstitialAd = null;
-                                        Log.d(TAG, "The ad was dismissed.");
-                                    }
-
-                                    @Override
-                                    public void onAdFailedToShowFullScreenContent(AdError adError) {
-                                        // Called when fullscreen content failed to show.
-                                        // Make sure to set your reference to null so you don't
-                                        // show it a second time.
-                                        mInterstitialAd = null;
-                                        Log.d(TAG, "The ad failed to show.");
-                                    }
-
-                                    @Override
-                                    public void onAdShowedFullScreenContent() {
-                                        // Called when fullscreen content is shown.
-                                        Log.d(TAG, "The ad was shown.");
-                                    }
-                                });
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.i(TAG, loadAdError.getMessage());
-                        mInterstitialAd = null;
-
-                        String error = String.format(
-                                Locale.ENGLISH,
-                                "domain: %s, code: %d, message: %s",
-                                loadAdError.getDomain(),
-                                loadAdError.getCode(),
-                                loadAdError.getMessage());
-                        Toast.makeText(
-                                        MainActivity.this,
-                                        "onAdFailedToLoad() with error: " + error, Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                });
-    }
+//    public void loadInterstitialAd() {
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        InterstitialAd.load(
+//                this,
+//                AD_UNIT_ID,
+//                adRequest,
+//                new InterstitialAdLoadCallback() {
+//                    @Override
+//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+//                        // The mInterstitialAd reference will be null until
+//                        // an ad is loaded.
+//                        mInterstitialAd = interstitialAd;
+//
+//                        Toast.makeText(MainActivity.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+//                        interstitialAd.setFullScreenContentCallback(
+//                                new FullScreenContentCallback() {
+//                                    @Override
+//                                    public void onAdDismissedFullScreenContent() {
+//                                        // Called when fullscreen content is dismissed.
+//                                        // Make sure to set your reference to null so you don't
+//                                        // show it a second time.
+//                                        mInterstitialAd = null;
+//                                        Log.d(TAG, "The ad was dismissed.");
+//                                    }
+//
+//                                    @Override
+//                                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+//                                        // Called when fullscreen content failed to show.
+//                                        // Make sure to set your reference to null so you don't
+//                                        // show it a second time.
+//                                        mInterstitialAd = null;
+//                                        Log.d(TAG, "The ad failed to show.");
+//                                    }
+//
+//                                    @Override
+//                                    public void onAdShowedFullScreenContent() {
+//                                        // Called when fullscreen content is shown.
+//                                        Log.d(TAG, "The ad was shown.");
+//                                    }
+//                                });
+//                    }
+//
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        // Handle the error
+//                        Log.i(TAG, loadAdError.getMessage());
+//                        mInterstitialAd = null;
+//
+//                        String error = String.format(
+//                                Locale.ENGLISH,
+//                                "domain: %s, code: %d, message: %s",
+//                                loadAdError.getDomain(),
+//                                loadAdError.getCode(),
+//                                loadAdError.getMessage());
+//                        Toast.makeText(
+//                                        MainActivity.this,
+//                                        "onAdFailedToLoad() with error: " + error, Toast.LENGTH_SHORT)
+//                                .show();
+//                    }
+//                });
+//    }
     public void loadBannerAds() {
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.BANNER);
@@ -229,15 +229,15 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
-    private void showInterstitial() {
-        // Show the ad if it"s ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null) {
-
-            mInterstitialAd.show(this);
-        } else {
-            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void showInterstitial() {
+//        // Show the ad if it"s ready. Otherwise toast and reload the ad.
+//        if (mInterstitialAd != null) {
+//
+//            mInterstitialAd.show(this);
+//        } else {
+//            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
 }
