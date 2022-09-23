@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <!-- view for AdMob Interstitial Ad -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/RVChat"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1997146053947882/6513540797">
+
+    </com.google.android.gms.ads.AdView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVChat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:minHeight="600dp"
+        android:paddingBottom="30dp"
+        android:layout_above="@id/LLayout"
+        />
 
     <LinearLayout
+        android:id="@+id/LLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:layout_marginBottom="5dp"
-        android:weightSum="5"
+        android:orientation="horizontal"
+        android:weightSum="10"
+
         >
 
         <EditText
             android:id="@+id/MessageInput"
-            android:layout_width="330dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginStart="16dp"
             android:autofillHints=""
             android:background="@drawable/base_rounded_component_input"
             android:hint="@string/PlaceholderTxtInput"
             android:inputType="textMultiLine"
             android:maxLines="6"
+            android:minHeight="48dp"
             android:padding="15dp"
             android:textColorHint="#757575" />
+
         <ImageButton
             android:id="@+id/SendBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginEnd="20dp"
             android:layout_marginStart="4dp"
-            android:src="@drawable/base_rounded_component_button"
-            android:contentDescription="@string/sendBtn"
+            android:layout_marginEnd="20dp"
             android:background="@android:color/transparent"
-            />
+            android:contentDescription="@string/sendBtn"
+            android:src="@drawable/base_rounded_component_button" />
 
 
     </LinearLayout>

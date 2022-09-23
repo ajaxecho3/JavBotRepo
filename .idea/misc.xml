@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/drawable-v24/rounded_button_focus.xml" value="0.1725" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/drawable-v24/rounded_button_hovered.xml" value="0.1725" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/drawable-v24/rounded_button_initial.xml" value="0.1725" />
+        <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/layout/bot_msg.xml" value="0.14909182643794147" />
         <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavBotRepo/app/src/main/res/layout/user_msg.xml" value="0.14959636730575177" />
         <entry key="..\:/Users/cvg_me/AndroidStudioProjects/JavaChatBot/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.281" />

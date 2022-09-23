@@ -2,6 +2,8 @@ package com.example.javachatbot;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
@@ -46,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String TOAST_TEXT = "Test ads are being shown. "
             + "To show live ads, replace the ad unit ID in res/values/strings.xml with your own ad unit ID.";
     private static final String TAG = "MainActivity";
-
+    private static final String AD_UNIT_ID = "ca-app-pub-1997146053947882/8635063831";
     private InterstitialAd mInterstitialAd;
     private ActivityMainBinding binding;
-
+    private AdView mAdView;
     //Chat Bot variable
 
     private RecyclerView chatsRV;
@@ -66,24 +68,15 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        // Log the Mobile Ads SDK version.
+        Log.d(TAG, "Google Mobile Ads SDK Version: " + MobileAds.getVersion());
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
         });
 
-        // Load the InterstitialAd and set the adUnitId (defined in values/strings.xml).
+        loadBannerAds();
         loadInterstitialAd();
-
-        // Create the next level button, which tries to show an interstitial when clicked.
-
-
-        // Create the text view to show the level number.
-
-
-        // Toasts the test ad message on the screen. Remove this after defining your own ad unit ID.
-        Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_LONG).show();
 
         chatsRV = findViewById(R.id.RVChat);
         userMsgEdt = findViewById(R.id.MessageInput);
@@ -102,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                showInterstitial();
                 getResponse(userMsgEdt.getText().toString());
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
                 userMsgEdt.setText("");
@@ -129,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     MsgModal modal = response.body();
                     messageModalArrayList.add(new MessageModal(modal.getCnt(), BOT_KEY));
                     messageRVAdapter.notifyItemInserted(messageRVAdapter.getItemCount() - 1);
+                    chatsRV.smoothScrollToPosition(messageRVAdapter.getItemCount() - 1);
 
                 }
             }
@@ -164,8 +159,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this, getString(R.string.interstitial_ad_unit_id), adRequest,
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        InterstitialAd.load(
+                this,
+                AD_UNIT_ID,
+                adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -221,21 +220,24 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+    public void loadBannerAds() {
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-1997146053947882/6513540797");
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
     private void showInterstitial() {
         // Show the ad if it"s ready. Otherwise toast and reload the ad.
         if (mInterstitialAd != null) {
+
             mInterstitialAd.show(this);
         } else {
             Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
-            goToNextLevel();
         }
     }
 
-    private void goToNextLevel() {
-        // Show the next level and reload the ad to prepare for the level after.
-        if (mInterstitialAd == null) {
-            loadInterstitialAd();
-        }
-    }
+
 }
