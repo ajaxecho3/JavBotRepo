@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Java Chat Bot"
-        android:textSize="40dp"
+        android:text="@string/appName"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/splashAnm"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -31,21 +31,21 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/cutebot" />
 
-    <ImageButton
-        android:id="@+id/StartBtn"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
 
-        android:background="@drawable/base_rounded_component_button"
-        android:contentDescription="@string/BotMsg"
+    <Button
+        android:id="@+id/StartBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="30dp"
         android:gravity="center"
         android:src="@android:drawable/ic_media_play"
+        android:text="@string/start_a_conversation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splashAnm"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.759" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

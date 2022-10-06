@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdError;
@@ -24,7 +24,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import java.util.Locale;
 
 public class SplashScreen extends AppCompatActivity {
-    private ImageButton startBtn;
+    private Button startBtn;
     private static final String TAG = "Splash Screen";
     private static final String AD_UNIT_ID = "ca-app-pub-1997146053947882/8635063831";
     private InterstitialAd mInterstitialAd;
@@ -65,7 +65,7 @@ public class SplashScreen extends AppCompatActivity {
                         // an ad is loaded.
                         mInterstitialAd = interstitialAd;
 
-                        Toast.makeText(SplashScreen.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(SplashScreen.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
                         interstitialAd.setFullScreenContentCallback(
                                 new FullScreenContentCallback() {
                                     @Override
@@ -119,7 +119,6 @@ public class SplashScreen extends AppCompatActivity {
             mInterstitialAd.show(this);
         } else {
             startActivity(new Intent(SplashScreen.this, MainActivity.class));
-            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
         }
     }
 }
