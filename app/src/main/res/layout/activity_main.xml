@@ -25,9 +25,52 @@
         android:layout_height="wrap_content"
         android:minHeight="600dp"
         android:paddingBottom="30dp"
-        android:layout_above="@id/LLayout"
+        android:layout_above="@id/LLayoutSuggest"
         />
 
+    <LinearLayout
+        android:id="@+id/LLayoutSuggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/LLayout"
+        android:weightSum="10">
+
+       <HorizontalScrollView
+           android:id="@+id/HSview"
+           android:layout_width="match_parent"
+           android:layout_height="60dp">
+           <LinearLayout
+               android:id="@+id/innerLLayoutSuggest"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               >
+               <Button
+                   android:id="@+id/btn1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/base_rounded_component_input"
+                   android:text="What is Java?"
+                   style="?android:attr/buttonBarButtonStyle" />
+
+               <Button
+                   android:id="@+id/btn2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/base_rounded_component_input"
+                   android:text="What is Java?"
+                   style="?android:attr/buttonBarButtonStyle" />
+
+               <Button
+                   android:id="@+id/btn3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/base_rounded_component_input"
+                   android:text="What is Java?"
+                   style="?android:attr/buttonBarButtonStyle" />
+           </LinearLayout>
+       </HorizontalScrollView>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/LLayout"
         android:layout_width="match_parent"

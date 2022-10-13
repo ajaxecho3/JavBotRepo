@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<MessageModal>messageModalArrayList;
     private MessageRVAdapter messageRVAdapter;
 
+    private Button btn1, btn2, btn3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +101,34 @@ public class MainActivity extends AppCompatActivity {
                 getResponse(userMsgEdt.getText().toString());
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
                 userMsgEdt.setText("");
+            }
+        });
+
+        btn1 = findViewById(R.id.btn1);
+        btn1.setText("What is Java Programming language?");
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getResponse("What is Java Programming language");
+                manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
+            }
+        });
+        btn2 = findViewById(R.id.btn2);
+        btn2.setText("What is Java programming used for?");
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getResponse("What is Java programming used for?");
+                manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
+            }
+        });
+        btn3 = findViewById(R.id.btn3);
+        btn3.setText("What are the features of JAVA?");
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getResponse("What are the features of JAVA?");
+                manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
             }
         });
 
