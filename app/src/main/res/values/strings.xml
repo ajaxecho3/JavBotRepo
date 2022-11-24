@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JavaChatBot</string>
+    <string name="app_name">Javale</string>
     <string name="action_settings">Settings</string>
 
 
@@ -14,6 +14,6 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="appName">Java Chat Bot</string>
+    <string name="appName">Javale</string>
     <string name="start_a_conversation">Start a Conversation</string>
 </resources>

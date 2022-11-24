@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
-    <TextView
+    <ImageView
+        android:id="@+id/logoJavale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/appName"
-        android:textSize="40sp"
+        android:src="@drawable/logojavale"
+        android:contentDescription="logo"
         app:layout_constraintBottom_toTopOf="@+id/splashAnm"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+   
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splashAnm"
@@ -39,6 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="30dp"
         android:gravity="center"
+        android:background="#2196F3"
         android:src="@android:drawable/ic_media_play"
         android:text="@string/start_a_conversation"
         app:layout_constraintBottom_toBottomOf="parent"
