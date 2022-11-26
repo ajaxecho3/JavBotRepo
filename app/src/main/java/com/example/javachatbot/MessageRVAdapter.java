@@ -1,6 +1,8 @@
 package com.example.javachatbot;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,7 @@ public class MessageRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 ((UserViewHolder)holder).userTv.setText(messageModal.getMessage());
                 break;
             case "bot":
-                ((BotViewHolder)holder).botMsgTv.setText(messageModal.getMessage());
+                ((BotViewHolder)holder).botMsgTv.setText(Html.fromHtml(messageModal.getMessage()));
                 break;
         }
     }
@@ -80,6 +82,7 @@ public class MessageRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public BotViewHolder(@NonNull View itemView){
             super(itemView);
             botMsgTv = itemView.findViewById(R.id.TVBot);
+            botMsgTv.setMovementMethod((LinkMovementMethod.getInstance()));
         }
 
     }
