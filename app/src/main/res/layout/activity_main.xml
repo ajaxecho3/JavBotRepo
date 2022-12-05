@@ -94,7 +94,9 @@
             android:maxLines="6"
             android:minHeight="48dp"
             android:padding="15dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+             />
 
         <ImageButton
             android:id="@+id/SendBtn"

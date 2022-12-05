@@ -105,29 +105,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1 = findViewById(R.id.btn1);
-        btn1.setText("What is Java Programming language?");
+        btn1.setText("Sample Compiler");
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getResponse("What is Java Programming language");
+                getResponse("Sample Compiler");
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
             }
         });
         btn2 = findViewById(R.id.btn2);
-        btn2.setText("What is Java programming used for?");
+        btn2.setText("What is Java?");
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getResponse("What is Java programming used for?");
+                getResponse("What is Java?");
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
             }
         });
         btn3 = findViewById(R.id.btn3);
-        btn3.setText("What are the features of JAVA?");
+        btn3.setText("History of Java?");
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getResponse("What are the features of JAVA?");
+                getResponse("History of Java?");
                 manager.scrollToPosition(messageRVAdapter.getItemCount() - 1);
             }
         });
